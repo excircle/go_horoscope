@@ -1,0 +1,14 @@
+################
+###11-13-2020###
+################
+
+NOTES:
+	-Script's validation check is running.
+	
+
+TODO:
+	1.) Write tests for validateDobInput().
+	2.) Write tests for warnUser().
+	3.) Write tests for convStrsToInts().
+	4.) Write tests for updateDOB().
+	5.) Start writing horoscope ranges.
