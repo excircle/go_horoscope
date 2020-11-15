@@ -11,7 +11,8 @@ func main() {
 	Clear()
 	for dob.Validated != true {
 		dob.gatherDOB()
-		dob.validateDOBInput()
+		dob.validateInput()
 	}
+	fmt.Println(dob)
 	fmt.Println(dob.DOB)
 }
