@@ -9,7 +9,9 @@ var (
 func main() {
 	//Wipe screen
 	Clear()
-	dob.GatherDOB()
+	for dob.Validated != true {
+		dob.gatherDOB()
+		dob.validateDOBInput()
+	}
 	fmt.Println(dob.DOB)
-
 }
