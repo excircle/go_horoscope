@@ -2,6 +2,14 @@ package main
 
 import "fmt"
 
+var (
+	dob DOB
+)
+
 func main() {
-  fmt.Println("Hello, World")
+	//Wipe screen
+	Clear()
+	dob.GatherDOB()
+	fmt.Println(dob.DOB)
+
 }
