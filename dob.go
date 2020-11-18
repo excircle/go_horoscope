@@ -2,11 +2,13 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"log"
 	"strconv"
 	"strings"
 )
 
+//DOB ...
 type DOB struct {
 	DOB       string
 	StrDOB    []string
@@ -42,15 +44,15 @@ func (d *DOB) createData() {
 	d.IntMonth, d.IntDay, d.IntYear = d.IntDOB[0], d.IntDOB[1], d.IntDOB[2]
 }
 
-func (d *DOB) checkData() bool {
+func (d *DOB) checkData(o io.Writer) bool {
 	//Check if month is within Jan-Dec/1-12 range
 	if d.IntMonth < 1 || d.IntMonth > 12 {
-		warnUser("Wrong month -> "+d.DOB+"\n\n", 0)
+		warnUser(o, "Wrong month -> "+d.DOB+"\n\n", 0)
 		return false
 	}
 	//Check if day within 1-31 range
 	if d.IntDay < 1 || d.IntDay > 31 {
-		warnUser("Wrong day -> "+d.DOB+"\n\n", 0)
+		warnUser(o, "Wrong day -> "+d.DOB+"\n\n", 0)
 		return false
 	}
 
@@ -79,25 +81,24 @@ func (d *DOB) checkData() bool {
 			d.DOB = fmt.Sprintf("%s/%s/%s", d.StrMonth, d.StrDay, strconv.Itoa(d.IntYear))
 			d.StrDOB = strings.Split(d.DOB, "/")
 			d.createData()
-			return true
 		} else {
 			return false
 		}
 	}
 	return true
 }
-func (d *DOB) validateInput() {
+func (d *DOB) validateInput(outputDirection io.Writer) {
 	d.StrDOB = strings.Split(d.DOB, "/")
 
 	//Reject invalidate date input
 	if len(d.StrDOB) != 3 {
-		warnUser("\nIncorrect format. Use slashes!\n", 1)
+		warnUser(outputDirection, "\nIncorrect format. Use slashes!\n", 1)
 		return
 	}
 
 	//Create day, month, and year as individual Int & Str fields
 	d.createData()
-	if d.checkData() == false {
+	if d.checkData(outputDirection) == false {
 		return
 	}
 

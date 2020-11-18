@@ -1,18 +1,20 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 var (
 	dob DOB
 )
 
-//redirect branch
 func main() {
 	//Wipe screen
 	clear()
 	for dob.Validated != true {
 		dob.gatherDOB()
-		dob.validateInput()
+		dob.validateInput(os.Stdout)
 	}
 	fmt.Println(dob)
 	fmt.Println(dob.DOB)

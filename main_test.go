@@ -1,7 +1,7 @@
 package main
 
 import (
-	"os"
+	"bytes"
 	"testing"
 )
 
@@ -23,18 +23,12 @@ func TestInvalidInput(t *testing.T) {
 		obj := DOB{}
 		obj.DOB = test.input
 
-		//redirect terminal user warning so it doesn't appear in testing output
-		rescueStdout := os.Stdout
-		_, w, _ := os.Pipe()
-		os.Stdout = w
+		//Create buffer to catch validateInput() text so we don't spam up the terminal
+		var b bytes.Buffer
 
 		//Test if test input incorrect sets obj.Validated == true
 		//Should be false if working correctly
-		obj.validateInput()
-
-		//Set stdout back
-		w.Close()
-		os.Stdout = rescueStdout
+		obj.validateInput(&b)
 
 		//Bad inputs should not have set obj.Validated == true
 		//FAIL if true
@@ -60,19 +54,11 @@ func TestShortInput(t *testing.T) {
 		//Create and assign test input
 		obj := DOB{}
 		obj.DOB = test.input
-
-		//redirect terminal user warning so it doesn't appear in testing output
-		rescueStdout := os.Stdout
-		_, w, _ := os.Pipe()
-		os.Stdout = w
+		var b bytes.Buffer
 
 		//Test if test input incorrectly leaves obj.Validated == false
 		//Should be true if working correctly
-		obj.validateInput()
-
-		//Set stdout back
-		w.Close()
-		os.Stdout = rescueStdout
+		obj.validateInput(&b)
 
 		//Bad inputs should not have set obj.Validated == true
 		//FAIL if true
@@ -93,19 +79,11 @@ func TestValidInput(t *testing.T) {
 		//Create and assign test input
 		obj := DOB{}
 		obj.DOB = test.input
-
-		//redirect terminal user warning so it doesn't appear in testing output
-		rescueStdout := os.Stdout
-		_, w, _ := os.Pipe()
-		os.Stdout = w
+		var b bytes.Buffer
 
 		//Test if test input incorrect sets obj.Validated == true
 		//Should be false if working correctly
-		obj.validateInput()
-
-		//Set stdout back
-		w.Close()
-		os.Stdout = rescueStdout
+		obj.validateInput(&b)
 
 		//Bad inputs should not have set obj.Validated == true
 		//FAIL if true
