@@ -45,12 +45,12 @@ func (d *DOB) createData() {
 func (d *DOB) checkData() bool {
 	//Check if month is within Jan-Dec/1-12 range
 	if d.IntMonth < 1 || d.IntMonth > 12 {
-		WarnUser("Wrong month -> "+d.DOB+"\n\n", 0)
+		warnUser("Wrong month -> "+d.DOB+"\n\n", 0)
 		return false
 	}
 	//Check if day within 1-31 range
 	if d.IntDay < 1 || d.IntDay > 31 {
-		WarnUser("Wrong day -> "+d.DOB+"\n\n", 0)
+		warnUser("Wrong day -> "+d.DOB+"\n\n", 0)
 		return false
 	}
 
@@ -91,7 +91,7 @@ func (d *DOB) validateInput() {
 
 	//Reject invalidate date input
 	if len(d.StrDOB) != 3 {
-		WarnUser("\nIncorrect format. Use slashes!\n", 1)
+		warnUser("\nIncorrect format. Use slashes!\n", 1)
 		return
 	}
 

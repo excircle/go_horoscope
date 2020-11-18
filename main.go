@@ -9,7 +9,7 @@ var (
 //redirect branch
 func main() {
 	//Wipe screen
-	Clear()
+	clear()
 	for dob.Validated != true {
 		dob.gatherDOB()
 		dob.validateInput()
