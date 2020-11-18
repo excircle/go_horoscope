@@ -16,6 +16,8 @@ func main() {
 		dob.gatherDOB()
 		dob.validateInput(os.Stdout)
 	}
-	fmt.Println(dob)
-	fmt.Println(dob.DOB)
+
+	answer := checkSign(dob)
+
+	fmt.Printf("%s\n", answer[dob.IntMonth].Longname)
 }
