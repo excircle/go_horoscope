@@ -7,6 +7,7 @@ import (
 
 var (
 	dob DOB
+	z   zodiak
 )
 
 func main() {
@@ -17,7 +18,8 @@ func main() {
 		dob.validateInput(os.Stdout)
 	}
 
+	z = buildZodiak()
 	answer := checkSign(dob)
 
-	fmt.Printf("%s\n", answer[dob.IntMonth].Longname)
+	fmt.Printf("Your sign is: %s\n", answer)
 }
