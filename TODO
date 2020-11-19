@@ -1,11 +1,15 @@
 ################
-###11-15-2020###
+###11-18-2020###
 ################
 
 NOTES:
-	-Script has been refactored to use DOB struct instead of massive "validateDOBInput()".
-	-Wrote 3 tests for input validation
+	-CLI complete
+	-Only finishing touches remain
 	
 
 TODO:
-	1.) Start writing horoscope ranges.
+	1.) Update tests
+	2.) Comment code
+	3.) Rename repo 'horoscope' to 'zodiak'
+	4.) Create 'cli' branch to store cli code
+	5.) Begin work on converting 'cli' to 'web' (Turn current app into REST API based Frontend)
